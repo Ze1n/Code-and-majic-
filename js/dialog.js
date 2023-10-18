@@ -12,16 +12,18 @@
 
     //Обработка событий открытия и закрытия диалогового окна
     function onPopupEscPress(evt){
-        if (window.utils.isEscKeycode){
+        if (window.utils.isEscKeycode(evt)){
             pressElement = evt.target;
             if (pressElement !== document.querySelector('.setup-user-name')){
+                console.log('lol');
                 closePopup();
             }
         }
     };
     
-    function onPopupEnterPress(){
-        if (window.utils.isEnterKeycode){
+    function onPopupEnterPress(evt){
+        evt.preventDefault();
+        if (window.utils.isEnterKeycode(evt)){
             setupForm.submit();
         }
     };
@@ -30,7 +32,7 @@
         userDialog.classList.remove('hidden');
 
         document.addEventListener('keydown', onPopupEscPress);
-        document.addEventListener('keydown', onPopupEnterPress);
+        setTimeout(() => document.addEventListener('keydown', onPopupEnterPress), 1000);
     };
     
     function closePopup(){
@@ -48,7 +50,7 @@
     });
     
     setupOpen.addEventListener('keydown', function(evt){
-        if (window.utils.isEnterKeycode){
+        if (window.utils.isEnterKeycode(evt)){
             openPopup();
         }
     });
@@ -58,7 +60,7 @@
     });
     
     setupClose.addEventListener('keydown', function(evt){
-        if (window.utils.isEnterKeycode){
+        if (window.utils.isEnterKeycode(evt)){
             closePopup();
         }
     });

@@ -7,10 +7,10 @@
     let similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item'); 
 
     setupForm.addEventListener('submit', function(evt){
+        evt.preventDefault();
         window.upload(new FormData(setupForm), function (response){
             document.querySelector('.setup').classList.add('hidden');
         }, errorHandler);
-        evt.preventDefault();
     });
 
     setupSubmit.addEventListener('click', function(){
