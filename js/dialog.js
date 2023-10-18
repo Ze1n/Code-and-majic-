@@ -15,7 +15,6 @@
         if (window.utils.isEscKeycode(evt)){
             pressElement = evt.target;
             if (pressElement !== document.querySelector('.setup-user-name')){
-                console.log('lol');
                 closePopup();
             }
         }
